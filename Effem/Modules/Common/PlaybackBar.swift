@@ -16,7 +16,7 @@ struct PlaybackBar: ViewModifier {
         content
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
-                    if mediaPlaybackManager.episode != nil {
+                    if true {
                         PlaybackBarView()
                     }
                 }
@@ -34,7 +34,7 @@ fileprivate struct PlaybackBarView: View {
     
     var body: some View {
         HStack {
-            LazyImage(url: URL(string: mediaPlaybackManager.episode?.image ?? "")) { state in
+            LazyImage(url: URL(string: "")) { state in
                 if let image = state.image {
                     image
                         .resizable()
@@ -52,9 +52,9 @@ fileprivate struct PlaybackBarView: View {
             .cornerRadius(4)
             
             VStack(alignment: .leading) {
-                Text(mediaPlaybackManager.episode?.title ?? "")
+                Text("title")
                     .font(.headline)
-                Text(mediaPlaybackManager.episode?.datePublished?.indexFormatted() ?? "")
+                Text("12/31/87")
                     .font(.subheadline)
             }
 

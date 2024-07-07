@@ -86,11 +86,11 @@ fileprivate struct EpisodeDetailsView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(mediaPlaybackManager.episode?.datePublished?.indexFormatted() ?? "")
+                Text("12/31/87")
                     .font(.subheadline)
-                Text(mediaPlaybackManager.episode?.title ?? "")
+                Text("title")
                     .font(.headline)
-                Text(mediaPlaybackManager.podcast?.title ?? "")
+                Text("something")
                     .setForegroundStyle()
             }
             
@@ -107,7 +107,7 @@ fileprivate struct EpisodeArtworkView: View {
     @State private var height: CGFloat?
     
     var body: some View {
-        LazyImage(url: URL(string: mediaPlaybackManager.episode?.image ?? "")) { state in
+        LazyImage(url: URL(string: "")) { state in
             if let image = state.image {
                 image
                     .resizable()

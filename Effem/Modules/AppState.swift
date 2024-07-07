@@ -15,9 +15,10 @@ public class AppState {
     }
     
     enum Tab {
+        case home
+        case live
         case library
-        case index
-        case social
+        case search
     }
     
     enum Sheet: Int, Identifiable {
@@ -39,13 +40,15 @@ public class AppState {
     public init() {}
     
     @ObservationIgnored
-    lazy var indexState = IndexState(parentState: self)
+    lazy var searchState = SearchState(parentState: self)
     @ObservationIgnored
     lazy var libraryState = LibraryState(parentState: self)
     @ObservationIgnored
-    lazy var socialState = SocialState(parentState: self)
-    @ObservationIgnored
     lazy var settingsState = SettingsState(parentState: self)
+    @ObservationIgnored
+    lazy var homeState = HomeState(parentState: self)
+    @ObservationIgnored
+    lazy var liveState = LiveState(parentState: self)
     
     func openSettings() {
         sheet = .settings

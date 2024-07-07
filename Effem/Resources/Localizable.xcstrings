@@ -7,10 +7,13 @@
     " " : {
 
     },
-    "%lld" : {
+    "0" : {
 
     },
     "1" : {
+
+    },
+    "12/31/87" : {
 
     },
     "about" : {
@@ -40,9 +43,6 @@
     "dark" : {
 
     },
-    "dark mode tint" : {
-
-    },
     "Done" : {
 
     },
@@ -52,16 +52,7 @@
     "EFFEM" : {
 
     },
-    "Effem is powered by Podcasting 2.0 and the [Podcast Index](https://podcastindex.org)" : {
-
-    },
     "enable sync" : {
-
-    },
-    "EPISODE 1" : {
-
-    },
-    "EPISODE 2" : {
 
     },
     "episodes" : {
@@ -70,10 +61,13 @@
     "Episodes" : {
 
     },
-    "iCloud sync" : {
+    "home" : {
 
     },
-    "index" : {
+    "Home" : {
+
+    },
+    "iCloud sync" : {
 
     },
     "info for podcasters" : {
@@ -85,10 +79,13 @@
     "light" : {
 
     },
-    "light mode tint" : {
+    "live" : {
 
     },
-    "new podcast" : {
+    "Live" : {
+
+    },
+    "NOSTR INFO" : {
 
     },
     "person" : {
@@ -115,13 +112,7 @@
     "Search" : {
 
     },
-    "Search View" : {
-
-    },
     "selected color scheme" : {
-
-    },
-    "Selected Color Scheme" : {
 
     },
     "settings" : {
@@ -136,19 +127,13 @@
     "shows, episidoes, and more" : {
 
     },
-    "social" : {
-
-    },
-    "SOCIAL" : {
+    "something" : {
 
     },
     "storage" : {
 
     },
     "Storage" : {
-
-    },
-    "subscribe" : {
 
     },
     "system" : {
@@ -164,15 +149,6 @@
 
     },
     "title" : {
-
-    },
-    "TODO: GET AUTHOR" : {
-
-    },
-    "Total Podcasts in the Index..." : {
-
-    },
-    "unsubscribe" : {
 
     }
   },

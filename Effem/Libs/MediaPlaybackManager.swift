@@ -5,10 +5,7 @@
 //  Created by Thomas Rademaker on 5/19/23.
 //
 
-import Foundation
-import PodcastIndexKit
-import SwiftData
-import AVKit
+@preconcurrency import Foundation
 import Combine
 import MediaPlayer
 
@@ -22,8 +19,6 @@ class MediaPlaybackManager {
     
     static let shared = MediaPlaybackManager()
     
-    var episode: Episode? = nil
-    var podcast: Podcast? = nil
     var isPlaying = false
     
     // TODO: maybe with new features this might need to be an AVAudioEngine
@@ -43,10 +38,6 @@ class MediaPlaybackManager {
     private init() {
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .duckOthers, .allowAirPlay, .allowBluetooth, .allowBluetoothA2DP])
         setupRemoteControlHandlers()
-        
-#if DEBUG
-        loadTestData()
-#endif
     }
     
     deinit {
@@ -60,42 +51,16 @@ class MediaPlaybackManager {
         }
     }
     
-    private func loadTestData() {
-        Task {
-            let podcastIndex = PodcastIndexKit()
-            do {
-                let episodeResponse = try await podcastIndex.episodesService.episodes(byFeedID: "41504")
-                
-                if episodeResponse.items?.count ?? 0 > 0 {
-                    let episode = episodeResponse.items?[0]
-                    self.episode = episode
-                    
-                    let podcastResponse = try await podcastIndex.podcastsService.podcast(byFeedId: episode?.feedId ?? 0)
-                    podcast = podcastResponse.feed
-                    print("EPISODE: \(String(describing: episode))")
-                }
-            } catch {
-                print("PODCAST ERROR: \(error)")
-            }
-        }
-    }
     
-    func setEpisode(_ episode: Episode?) {
-        self.episode = episode
-    }
-    
-    func setPodcast(_ podcast: Podcast?) {
-        self.podcast = podcast
-    }
     
     func playPause() {
-        guard let episode, let enclosureUrl = episode.enclosureUrl, let url = URL(string: enclosureUrl) else { return }
-        
-        if isPlaying {
-            stopAudio()
-        } else {
-            playAudio(url: url)
-        }
+//        guard let episode, let enclosureUrl = episode.enclosureUrl, let url = URL(string: enclosureUrl) else { return }
+//        
+//        if isPlaying {
+//            stopAudio()
+//        } else {
+//            playAudio(url: url)
+//        }
     }
     
     func skipAhead30() {
@@ -190,7 +155,7 @@ class MediaPlaybackManager {
         }
     }
     
-    private func killCurrentEpisode() {
+    private func killCurrentSong() {
         stopAudio()
         
         switch playbackType {
@@ -205,7 +170,7 @@ class MediaPlaybackManager {
             break
         }
         
-        episode = nil
+//        song = nil
     }
     
     private func playerDidUpdate() {
@@ -332,20 +297,20 @@ extension MediaPlaybackManager {
             return .success
         }
         
-        center.skipForwardCommand.addTarget { [weak self] _ in
-            guard let self else { return .noActionableNowPlayingItem }
+        center.skipForwardCommand.addTarget { _ in // [weak self] _ in
+//            guard let self else { return .noActionableNowPlayingItem }
             return .success
         }
         
-        center.skipBackwardCommand.addTarget { [weak self] _ in
-            guard let self else { return .noActionableNowPlayingItem }
+        center.skipBackwardCommand.addTarget { _ in // [weak self] _ in
+//            guard let self else { return .noActionableNowPlayingItem }
             return .success
         }
     }
     
     private func updateNowPlayingInfo() {
-        
-        if let episode {
+        /*
+        if let song {
             MPNowPlayingInfoCenter.default().nowPlayingInfo = [
                 MPMediaItemPropertyTitle: episode.title ?? "",
                 MPMediaItemPropertyArtist: podcast?.author ?? "",
@@ -364,5 +329,8 @@ extension MediaPlaybackManager {
         } else {
             MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
         }
+         */
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
     }
 }

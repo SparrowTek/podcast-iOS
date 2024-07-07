@@ -18,20 +18,25 @@ struct MainTabBar: View {
         
         TabView(selection: $state.tab) {
             Group {
+                HomePresenter()
+                    .environment(state.homeState)
+                    .tag(AppState.Tab.home)
+                    .tabItem { Label("home", systemImage: "music.note.house") }
+                
+                LivePresenter()
+                    .environment(state.liveState)
+                    .tag(AppState.Tab.live)
+                    .tabItem { Label("live", systemImage: "antenna.radiowaves.left.and.right") }
+                
                 LibraryPresenter()
                     .environment(state.libraryState)
                     .tag(AppState.Tab.library)
-                    .tabItem { Label("library", systemImage: "square.stack.fill")}
+                    .tabItem { Label("library", systemImage: "music.quarternote.3")}
                 
-                IndexPresenter()
-                    .environment(state.indexState)
-                    .tag(AppState.Tab.index)
-                    .tabItem { Label("index", systemImage: "magnifyingglass")}
-                
-                SocialPresenter()
-                    .environment(state.socialState)
-                    .tag(AppState.Tab.social)
-                    .tabItem { Label("social", systemImage: "party.popper")}
+                SearchPresenter()
+                    .environment(state.searchState)
+                    .tag(AppState.Tab.search)
+                    .tabItem { Label("search", systemImage: "magnifyingglass")}
             }
             .playbackBar()
 //            .toolbarBackground(.visible, for: .tabBar)

@@ -1,15 +1,14 @@
 //
-//  SocialState.swift
+//  LiveState.swift
 //  Effem
 //
-//  Created by Thomas Rademaker on 5/19/23.
+//  Created by Thomas Rademaker on 4/17/24.
 //
 
 import Foundation
-import SwiftData
 
 @Observable
-class SocialState {
+class LiveState {
     private unowned let parentState: AppState
     
     init(parentState: AppState) {

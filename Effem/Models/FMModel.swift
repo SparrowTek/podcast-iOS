@@ -24,22 +24,22 @@ import SwiftData
 //    ])
 //}
 
-struct EffemDataContainerViewModifier: ViewModifier {
-    let container: ModelContainer
-    
-    init(inMemory: Bool) {
-        do {
-            container = try ModelContainer(for: FMPodcast.self, FMEpisode.self, configurations: ModelConfiguration(isStoredInMemoryOnly: inMemory))
-        } catch {
-            fatalError("Failed to create ModelContainer")
-        }
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .modelContainer(container)
-    }
-}
+//struct EffemDataContainerViewModifier: ViewModifier {
+//    let container: ModelContainer
+//    
+//    init(inMemory: Bool) {
+//        do {
+//            container = try ModelContainer(for: FMPodcast.self, FMEpisode.self, configurations: ModelConfiguration(isStoredInMemoryOnly: inMemory))
+//        } catch {
+//            fatalError("Failed to create ModelContainer")
+//        }
+//    }
+//    
+//    func body(content: Content) -> some View {
+//        content
+//            .modelContainer(container)
+//    }
+//}
 
 //struct ACModelViewModifier: ViewModifier {
 //    @Environment(\.modelContext) private var modelContext
@@ -51,9 +51,9 @@ struct EffemDataContainerViewModifier: ViewModifier {
 //    }
 //}
 
-extension View {
-    func setupModel(inMemory: Bool = FMModelOptions.inMemoryPersistence) -> some View {
-        modifier(EffemDataContainerViewModifier(inMemory: inMemory))
-    }
-}
+//extension View {
+//    func setupModel(inMemory: Bool = FMModelOptions.inMemoryPersistence) -> some View {
+//        modifier(EffemDataContainerViewModifier(inMemory: inMemory))
+//    }
+//}
 
